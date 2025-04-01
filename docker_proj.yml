@@ -1,1 +1,29 @@
+version: '3.8'
+service:
+  httpd:
+    image: gwii/xe:latest
+    deploy:
+      replicas: 3
+      placement:
+        constraint: [ node.role == worker ]
+    volumes:
+      - httpd_vol:/var/www/html
+    networks:
+      - xe_net: 
+    ports:
+      - "8080:80"
 
+
+volumes:
+  httpd_vol:
+    driver: local
+    driver_opts:
+      type: "nfs4"
+      o: "addr=211.183.3.200,rw"
+      device: "/httpd"
+
+
+networks:
+  xe_net:
+    driver: overlay
+    attachable: true      
