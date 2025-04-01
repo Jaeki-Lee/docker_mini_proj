@@ -1,11 +1,11 @@
 version: '3.8'
-service:
+services:
   httpd:
     image: gwii/xe:latest
     deploy:
       replicas: 3
       placement:
-        constraint: [ node.role == worker ]
+        constraints: [ node.role == worker ]
     volumes:
       - httpd_vol:/var/www/html
     networks:
@@ -26,4 +26,4 @@ volumes:
 networks:
   xe_net:
     driver: overlay
-    attachable: true      
+    attachable: true
