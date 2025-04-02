@@ -9,7 +9,7 @@ services:
     volumes:
       - httpd_vol:/var/www/html
     networks:
-      - xe_net: 
+      - xe_net
     ports:
       - "8080:80"
 
