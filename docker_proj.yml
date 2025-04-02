@@ -20,7 +20,7 @@ volumes:
     driver_opts:
       type: "nfs4"
       o: "addr=211.183.3.200,rw"
-      device: "/httpd"
+      device: ":/httpd"
 
 
 networks:
